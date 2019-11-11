@@ -1,5 +1,4 @@
-import nltk, re, pprint
-from nltk import CFG, Nonterminal, nonterminals, Production
+import nltk
 
 
 class GrammarChecker(object):
@@ -11,15 +10,23 @@ class GrammarChecker(object):
     def define_grammar(self, grammar_file):
         self.grammar = nltk.data.load(grammar_file)
 
-    def print_tree(self, sentence):
-        sent = sentence.split()
+    def check_grammar(self, sentence):
+        sent = sentence.lower().split()
+        print(sent)
         rd_parser = nltk.IncrementalChartParser(self.grammar)
+
+        trees = 0
         try:
             for tree in rd_parser.parse(sent):
-                print(tree)
+                trees += 1
         except ValueError:
-            print('Grammar does not cover some of the input words: '
+            print('[-] Grammar does not cover some of the input words: '
                   'Update your dictionary to include the missing words')
+            raise Exception('[-] Grammar does not cover some of the input '
+                            'words:Update your dictionary to include '
+                            'the missing words')
+
+        return trees
 
     def update_grammar(self, grammar_file, dictionary):
         grammar = open(grammar_file, 'r', encoding='UTF-8').read()
@@ -89,6 +96,14 @@ class GrammarChecker(object):
 
         with open(dictionary + '/verbs', encoding='UTF-8') as f:
             grammar += 'Verb ->'
+            lines = f.read().splitlines()
+            grammar += ' \'{}\' '.format(lines[0])
+            for i in lines[1:]:
+                grammar += '| \'{}\' '.format(i)
+            grammar += '\n'
+
+        with open(dictionary + '/punctuations', encoding='UTF-8') as f:
+            grammar += 'Punctuation ->'
             lines = f.read().splitlines()
             grammar += ' \'{}\' '.format(lines[0])
             for i in lines[1:]:
