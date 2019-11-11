@@ -102,14 +102,6 @@ class GrammarChecker(object):
                 grammar += '| \'{}\' '.format(i)
             grammar += '\n'
 
-        with open(dictionary + '/punctuations', encoding='UTF-8') as f:
-            grammar += 'Punctuation ->'
-            lines = f.read().splitlines()
-            grammar += ' \'{}\' '.format(lines[0])
-            for i in lines[1:]:
-                grammar += '| \'{}\' '.format(i)
-            grammar += '\n'
-
         new_file_name = 'custom_grammar.cfg'
         with open(new_file_name, 'w', encoding='UTF-8') as f:
             f.write(grammar)
