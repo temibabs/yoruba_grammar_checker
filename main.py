@@ -17,12 +17,13 @@ def home():
 def check_sentence():
     form = Form(request.form)
     sentence = request.form['sentence']
-    result = grammar_checker.check_grammar(sentence)
-    if result >= 1:
-        return "[+] The sentence is a complete Yourba sentence."
-    elif result == 0:
-        return "[-] The sentence is not a complete Yoruba sentence."
-    else:
+    try:
+        result = grammar_checker.check_grammar(sentence)
+        if result >= 1:
+            return "[+] The sentence is a complete Yourba sentence."
+        elif result == 0:
+            return "[-] The sentence is not a complete Yoruba sentence."
+    except Exception:
         return "[-] Grammar does not cover some of the input words:" \
                "Update your dictionary to include the missing words"
 
