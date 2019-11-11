@@ -9,8 +9,8 @@ app = Flask(__name__)
 
 def get_config():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--grammar_file', type=str, default='./grammar.cfg')
-    parser.add_argument('--dictionary', type=str, default='dictionary')
+    # parser.add_argument('--grammar_file', type=str, default='./grammar.cfg')
+    # parser.add_argument('--dictionary', type=str, default='dictionary')
     parser.add_argument('--input_file', type=str, default='sentences')
     parser.add_argument('--web_mode', type=str, default=True)
 
