@@ -1,1 +1,1 @@
-web: gunicorn --grammar_file grammar.cfg --dictionary dictionary --input_file sentences --web_mode True main:app
+web: gunicorn main:app --grammar_file grammar.cfg --dictionary dictionary --input_file sentences --web_mode True
