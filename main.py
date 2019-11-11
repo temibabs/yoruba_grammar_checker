@@ -49,4 +49,9 @@ def main(config):
 
 
 if __name__ == '__main__':
-    app.run()
+    print("We in this b*******************")
+    if not conf.web_mode:
+        main(conf)
+    else:
+        print("We in this b*******************")
+        app.run()
