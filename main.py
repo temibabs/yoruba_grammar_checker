@@ -18,7 +18,7 @@ def get_config():
 
 
 conf = get_config()
-grammar_checker = GrammarChecker(conf.grammar_file, conf.dictionary)
+grammar_checker = GrammarChecker('./grammar.cfg', 'dictionary')
 
 
 @app.route('/', methods=['GET'])
@@ -49,9 +49,4 @@ def main(config):
 
 
 if __name__ == '__main__':
-    print("We in this b*******************")
-    if not conf.web_mode:
-        main(conf)
-    else:
-        print("We in this b*******************")
-        app.run()
+    app.run()
