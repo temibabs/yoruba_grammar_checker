@@ -3,3 +3,4 @@ flask
 gunicorn
 flask-cors
 wtforms
+nltk
