@@ -108,7 +108,6 @@ class GrammarChecker(object):
 
         return new_file_name
 
-    @staticmethod
-    def update_dictionary(word, file):
+    def update_dictionary(self, word, file):
         with open('dictionary/'+file, 'a') as f:
             f.write(word)
