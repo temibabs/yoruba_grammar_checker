@@ -10,5 +10,22 @@
     <br>
     <input type="submit">
 </form>
+
+<br>
+Update the dictionary:
+<form action="/updateDictionary" method="post">
+  Word: <input type="text" name="word"><br>
+  Part of speech:
+  <input type="radio" name="pos" value="conjunctions"> Conjunction
+  <input type="radio" name="pos" value="disjunctions"> Disjunction
+  <input type="radio" name="pos" value="nouns"> Noun
+  <input type="radio" name="pos" value="post-verbal-modifiers"> Post-Verbal Modifier
+  <input type="radio" name="pos" value="pre-verbal-modifiers"> Pre-Verbal Modifier
+  <input type="radio" name="pos" value="qualifiers"> Qualifier
+  <input type="radio" name="pos" value="si-sententials"> Sentence-Initial Sentential
+  <input type="radio" name="pos" value="sf-sententials"> Sentence-Final Sentential
+  <input type="radio" name="pos" value="verbs"> Verb
+  <input type="submit">
+</form>
 </body>
 </html>

@@ -15,7 +15,6 @@ def home():
 
 @app.route('/checkSentence', methods=['POST'])
 def check_sentence():
-    form = Form(request.form)
     sentence = request.form['sentence']
     try:
         result = grammar_checker.check_grammar(sentence)
@@ -27,6 +26,16 @@ def check_sentence():
         return "[-] Grammar does not cover some of the input words:" \
                "Update your dictionary to include the missing words"
 
+
+@app.route('/updateDictionary', methods=['POST'])
+def update_dictionary():
+    word = request.form['word']
+    file = request.form['pos']
+    grammar_checker.update_dictionary(word, file)
+    grammar_checker.update_grammar('grammar.cfg', 'dictionary')
+    grammar_checker.define_grammar('custom_grammar.cfg')
+    return 'The dictionary has been updated with your word. ' \
+           'Thank you for your input.'
 
 def main(config):
     with open(config.input_file, 'r', encoding='UTF-8') as f:
