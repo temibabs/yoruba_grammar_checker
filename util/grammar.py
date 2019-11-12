@@ -110,4 +110,4 @@ class GrammarChecker(object):
 
     def update_dictionary(self, word, file):
         with open('dictionary/'+file, 'a') as f:
-            f.write(word)
+            f.write(word+'\n')
